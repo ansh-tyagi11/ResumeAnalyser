@@ -23,38 +23,83 @@ const About = () => {
             }
         ];
 
+    const analytical = [
+        {
+            id: "1",
+            icon: "robot_2",
+            color: "text-[#4752C3]",
+            word: "ATS Compatibility"
+        },
+        {
+            id: "2",
+            icon: "model_training",
+            color: "text-[#A83349]",
+            word: "Skills Extraction"
+        },
+        {
+            id: "3",
+            icon: "key",
+            color: "text-[#C58500]",
+            word: "Key Optimization"
+        },
+        {
+            id: "4",
+            icon: "work_history",
+            color: "text-[#4752C3]",
+            word: "Experience Phrasing"
+        },
+        {
+            id: "5",
+            icon: "emoji_events",
+            color: "text-[#A83349]",
+            word: "Achievements"
+        },
+        {
+            id: "6",
+            icon: "format_align_left",
+            color: "text-[#C58500]",
+            word: "Formatting & Flow"
+        },
+        {
+            id: "7",
+            icon: "join_inner",
+            color: "text-[#4752C3]",
+            word: "Job Description Match"
+        }
+    ];
+
     return (
         <>
-            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
                 <div
-                    className="absolute left-[-10vw] top-[-10vw] h-[55vw] w-[55vw] rounded-full bg-[#BEC2FF]/60 blur-[100px] mix-blend-multiply">
+                    className="absolute left-[-20vw] top-[-20vw] h-[70vw] w-[70vw] rounded-full bg-[#BEC2FF]/60 blur-[100px] mix-blend-multiply sm:left-[-10vw] sm:top-[-10vw] sm:h-[55vw] sm:w-[55vw]">
                 </div>
                 <div
-                    className="absolute right-[-10vw] top-[35vh] h-[50vw] w-[50vw] rounded-full bg-[#FFB2B9]/60 blur-[100px] mix-blend-multiply">
+                    className="absolute right-[-20vw] top-[45vh] h-[70vw] w-[70vw] rounded-full bg-[#FFB2B9]/60 blur-[100px] mix-blend-multiply sm:right-[-10vw] sm:top-[35vh] sm:h-[50vw] sm:w-[50vw]">
                 </div>
             </div>
-            <main className='relative flex min-w-0 flex-col gap-20 overflow-hidden'>
+
+            <main className='relative flex min-w-0 flex-col gap-16 overflow-hidden bg-linear-to-r from-[#BEC2FF]/60 to-[#FFB2B9]/60 sm:gap-20'>
 
                 {/* Hero Section */}
-                <section className='h-75 w-full px-0 pb-0 pt-12 lg:px-32'>
-                    <div className='w-full px-5 lg:px-16 flex flex-col'>
+                <section className='w-full px-5 pb-0 pt-12 sm:px-8 lg:px-32'>
+                    <div className='flex w-full flex-col lg:px-16'>
 
                         {/* Mission */}
-                        <div className='pb-6 h-14 text-center'>
-                            <span className='h-8 py-1.5 px-4 bg-[#FFDADC]/50 font-medium text-[14px] leading-5 tracking-[1.4px] text-[#A83349] rounded-full'>OUR MISSION</span>
+                        <div className='pb-6 text-center'>
+                            <span className='inline-block rounded-full bg-[#FFDADC]/50 px-4 py-1.5 text-[13px] font-medium leading-5 tracking-[1.4px] text-[#A83349] sm:text-[14px]'>OUR MISSION</span>
                         </div>
 
                         {/* Heading */}
-                        <div className='pb-6 h-34'>
-                            <h1 className='lg:px-30 px-5 h-28 font-bold text-wrap text-center text-[32px] lg:text-[48px] lg:leading-14 md:leading-[24x] md:tracking-[-0.32px] lg:tracking-[-0.96px] shadow-[0px_0px_20px_0px_#4752C3/30] text-[#101C2C] '>
+                        <div className='pb-6'>
+                            <h1 className='mx-auto max-w-4xl px-1 text-center text-[28px] font-bold leading-9 text-wrap text-[#101C2C] shadow-[0px_0px_20px_0px_#4752C3/30] sm:text-[36px] sm:leading-11 md:tracking-[-0.32px] lg:px-0 lg:text-[48px] lg:leading-14 lg:tracking-[-0.96px]'>
                                 Your experience deserves to be understood.
                             </h1>
-
                         </div>
 
                         {/* Para */}
-                        <div className="w-full px-4 lg:px-28.5">
-                            <p className="mx-auto max-w-166.5 text-center text-[18px] leading-6 lg:leading-[29.3px] text-[#454653]">
+                        <div className="w-full px-2 sm:px-6 lg:px-28.5">
+                            <p className="mx-auto max-w-166.5 text-center text-[16px] leading-6 text-[#454653] sm:text-[18px] lg:leading-[29.3px]">
                                 We built AI Resume Analyzer to help people communicate their skills, experience,
                                 and potential more clearly without turning resume improvement into guesswork.
                             </p>
@@ -64,11 +109,11 @@ const About = () => {
                 </section>
 
                 {/* Story Section */}
-                <section className='mx-auto w-full max-w-3xl px-5 md:px-16'>
-                    <div className='relative bg-white/80 p-12 backdrop-blur-md shadow-[0px_12px_32px_0px_rgb(29_41_57/3%)] md:p-12 rounded-4xl overflow-hidden'>
-                        <div className='w-2 absolute left-0 top-0 h-full bg-linear-to-b from-[#4752c3] to-[#a83349]' />
-                        <h3 className='pb-6 text-[#101C2C] leading-9.5 text-[30px] font-semibold tracking-[-0.3px] '>Why we build this.</h3>
-                        <div className='gap-6 flex-col flex leading-7 text-[18px] text-[#454653] '>
+                <section className='mx-auto w-full max-w-3xl px-5 sm:px-8 md:px-16'>
+                    <div className='relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-[0px_12px_32px_0px_rgb(29_41_57/3%)] backdrop-blur-md sm:p-8 md:rounded-4xl md:p-12'>
+                        <div className='absolute left-0 top-0 h-full w-2 bg-linear-to-b from-[#4752c3] to-[#a83349]' />
+                        <h3 className='pb-4 text-[22px] font-semibold leading-8 tracking-[-0.3px] text-[#101C2C] sm:pb-6 sm:text-[26px] md:text-[30px] md:leading-9.5'>Why we build this.</h3>
+                        <div className='flex flex-col gap-4 text-[16px] leading-6.5 text-[#454653] sm:gap-6 sm:text-[18px] sm:leading-7'>
                             <p>
                                 For too long, the job application process has been a black box.
                                 Brilliant professionals submit carefully crafted resumes, only to be
@@ -93,27 +138,27 @@ const About = () => {
                 </section>
 
                 {/* Philosophy Section */}
-                <section className='mx-auto w-full max-w-7xl px-5 md:px-16'>
-                    <div className='flex gap-12 flex-col'>
-                        <h3 className='leading-9.5 font-semibold text-[30px] tracking-[-0.3px] text-[#101C2C] text-center'>Our Core Principles</h3>
-                        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                <section className='mx-auto w-full max-w-7xl px-5 sm:px-8 md:px-16'>
+                    <div className='flex flex-col gap-8 sm:gap-12'>
+                        <h3 className='text-center text-[24px] font-semibold leading-8 tracking-[-0.3px] text-[#101C2C] sm:text-[26px] md:text-[30px] md:leading-9.5'>Our Core Principles</h3>
+                        <div className='grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3'>
                             {
                                 principles.map((principle) => (
-                                    <div key={principle.id} className='p-8 pb-14 rounded-[48px] bg-white shadow-[0_12px_32px_rgba(29,41,57,0.05)]'>
+                                    <div key={principle.id} className='rounded-4xl bg-white p-6 pb-10 shadow-[0_12px_32px_rgba(29,41,57,0.05)] sm:rounded-[40px] sm:p-8 sm:pb-14 md:rounded-[48px]'>
                                         {/* Icon */}
-                                        <div className='rounded-full flex justify-center items-center bg-[#E0E0FF] mb-6 w-12 h-12'>
+                                        <div className='mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-[#E0E0FF] sm:mb-6 sm:h-12 sm:w-12'>
                                             <span className="material-symbols-outlined [font-variation-settings:'FILL'_1] text-[#4752C3]">
                                                 {principle.icon}
                                             </span>
                                         </div>
 
                                         {/* Heading */}
-                                        <div className='pb-3 leading-8 font-semibold text-[24px] text-[#101C2C] '>
+                                        <div className='pb-2 text-[20px] font-semibold leading-7 text-[#101C2C] sm:pb-3 sm:text-[24px] sm:leading-8'>
                                             {principle.heading}
                                         </div>
 
                                         {/* Para */}
-                                        <div className='leading-6 text-[16px] text-[#454653] '>
+                                        <div className='text-[15px] leading-6 text-[#454653] sm:text-[16px]'>
                                             {principle.para}
                                         </div>
 
@@ -126,51 +171,51 @@ const About = () => {
                 </section>
 
                 {/* AI Perspective Section */}
-                <section className="w-full flex flex-col items-center justify-center gap-16 mx-auto max-w-full overflow-hidden px-16 py-20 bg-[#EFF4FF]">
+                <section className="mx-auto flex w-full max-w-full flex-col items-center justify-center gap-10 overflow-hidden bg-[#EFF4FF] px-5 py-14 sm:gap-16 sm:px-8 sm:py-20 md:px-16">
 
-                    <h2 className="font-semibold text-center text-[30px] leading-9.5 tracking-[-0.3px]">
+                    <h2 className="max-w-2xl text-center text-[22px] font-semibold leading-8 tracking-[-0.3px] sm:text-[26px] md:text-[30px] md:leading-9.5">
                         "AI should guide you, not replace your voice."
                     </h2>
 
-                    <div className="w-full flex md:flex-row flex-col justify-center gap-8 items-center">
+                    <div className="flex w-full flex-col items-center justify-center gap-4 sm:gap-6 md:flex-row md:gap-8">
 
-                        <div className="uppercase w-48 h-11 px-6 py-3 rounded-full font-medium text-[14px] leading-5 tracking-[0.28px] text-center shadow-[0px_1px_2px_0px_#000000/5] bg-white text-[#454653]">
+                        <div className="w-44 rounded-full bg-white px-5 py-3 text-center text-[13px] font-medium uppercase leading-5 tracking-[0.28px] text-[#454653] shadow-[0px_1px_2px_0px_#000000/5] sm:w-48 sm:px-6 sm:text-[14px]">
                             Your Experience
                         </div>
 
-                        <span className="material-symbols-outlined text-[#4752c3] hidden! md:inline-block!">
+                        <span className="material-symbols-outlined hidden! text-[#4752c3] md:inline-block!">
                             arrow_forward
                         </span>
 
-                        <span className="material-symbols-outlined text-[#4752c3] inline-block! md:hidden!">
+                        <span className="material-symbols-outlined inline-block! text-[#4752c3] md:hidden!">
                             arrow_downward
                         </span>
 
-                        <div className="uppercase w-48 h-11 px-6 py-3 rounded-full font-medium text-[14px] leading-5 tracking-[0.28px] text-center bg-[#4752C3] text-white shadow-[0px_4px_6px_-1px_#000000/10]">
+                        <div className="w-44 rounded-full bg-[#4752C3] px-5 py-3 text-center text-[13px] font-medium uppercase leading-5 tracking-[0.28px] text-white shadow-[0px_4px_6px_-1px_#000000/10] sm:w-48 sm:px-6 sm:text-[14px]">
                             AI Analysis
                         </div>
 
-                        <span className="material-symbols-outlined text-[#4752c3] hidden! md:inline-block!">
+                        <span className="material-symbols-outlined hidden! text-[#4752c3] md:inline-block!">
                             arrow_forward
                         </span>
 
-                        <span className="material-symbols-outlined text-[#4752c3] inline-block! md:hidden!">
+                        <span className="material-symbols-outlined inline-block! text-[#4752c3] md:hidden!">
                             arrow_downward
                         </span>
 
-                        <div className="uppercase w-48 h-11 px-6 py-3 rounded-full font-medium text-[14px] leading-5 tracking-[0.28px] text-center shadow-[0px_1px_2px_0px_#000000/5] bg-[#FE7488] text-[#101C2C]">
+                        <div className="w-44 rounded-full bg-[#FE7488] px-5 py-3 text-center text-[13px] font-medium uppercase leading-5 tracking-[0.28px] text-[#101C2C] shadow-[0px_1px_2px_0px_#000000/5] sm:w-48 sm:px-6 sm:text-[14px]">
                             Clear Insights
                         </div>
 
-                        <span className="material-symbols-outlined text-[#4752c3] hidden! md:inline-block!">
+                        <span className="material-symbols-outlined hidden! text-[#4752c3] md:inline-block!">
                             arrow_forward
                         </span>
 
-                        <span className="material-symbols-outlined text-[#4752c3] inline-block! md:hidden!">
+                        <span className="material-symbols-outlined inline-block! text-[#4752c3] md:hidden!">
                             arrow_downward
                         </span>
 
-                        <div className="uppercase w-48 h-11 px-6 py-3 rounded-full font-medium text-[14px] leading-5 tracking-[0.28px] text-center shadow-[0px_1px_2px_0px_#000000/5] bg-[#D7E3F9] text-[#101C2C]">
+                        <div className="w-44 rounded-full bg-[#D7E3F9] px-5 py-3 text-center text-[13px] font-medium uppercase leading-5 tracking-[0.28px] text-[#101C2C] shadow-[0px_1px_2px_0px_#000000/5] sm:w-48 sm:px-6 sm:text-[14px]">
                             Your Decisions
                         </div>
 
@@ -178,13 +223,42 @@ const About = () => {
                 </section>
 
                 {/* Analytical Constellation */}
-                <section className='w-full max-w-full overflow-hidden'>
-                    HI
+                <section className='w-full max-w-full overflow-hidden px-5 sm:px-8 md:px-16 lg:px-32'>
+                    <div className='flex flex-col gap-8 py-2 sm:gap-12 md:px-16'>
+                        <h2 className='text-center text-[24px] font-semibold leading-8 tracking-[-0.3px] text-[#101C2C] sm:text-[26px] md:text-[30px] md:leading-9.5'>Comprehensive Analysis</h2>
+
+                        <div className='mx-auto flex max-w-4xl flex-row flex-wrap justify-center gap-3 sm:gap-4'>
+                            {
+                                analytical.map((analysis, id) => (
+                                    <div key={id} className='flex items-center gap-2 rounded-full bg-white px-4 py-3 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] sm:gap-3 sm:px-6 sm:py-4'>
+                                        <span className={`material-symbols-outlined h-4 w-4 sm:h-4.5 sm:w-4.5 ${analysis.color}`}>{analysis.icon}</span>
+                                        <span className='whitespace-nowrap text-[14px] leading-6 text-[#101C2C] sm:text-[16px]'>{analysis.word}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </section>
 
                 {/* Final Promise & CTA */}
-                <section className='w-full max-w-full overflow-hidden'>
-                    HI
+                <section className='w-full px-5 pb-16 pt-0 sm:px-8 md:px-16 lg:px-32'>
+                    <div className='relative mx-auto flex w-full max-w-3xl flex-col justify-center gap-4 overflow-hidden rounded-4xl border border-white/50 bg-[#faf4f9] p-8 shadow-[0px_20px_40px_0px_rgba(71,82,195,0.08)] backdrop-blur-xl sm:gap-6 sm:rounded-[3rem] sm:p-12'>
+
+                        <div className='absolute right-[-5vw] top-[-5vw] h-35 w-35 rounded-full bg-[#FE7488]/20 blur-2xl sm:h-48 sm:w-48' />
+                        <div className='absolute bottom-[-5vw] left-[-5vw] h-35 w-35 rounded-full bg-[#4752C3]/10 blur-2xl sm:h-48 sm:w-48' />
+
+                        <h2 className='flex flex-col justify-center text-center text-[30px] font-bold leading-9 tracking-[-0.6px] text-[#101C2C] sm:text-[38px] sm:leading-11 md:text-[48px] md:leading-14 md:tracking-[-0.96px]'>
+                            <span>No vague advice. </span>
+                            <span>No meaningless scores.</span>
+                        </h2>
+                        <p className='pb-2 text-center text-[16px] leading-6.5 text-[#454653] sm:pb-4 sm:text-[18px] sm:leading-7'>
+                            Just clear feedback you can act on.
+                        </p>
+                        <button className='mx-auto flex h-12 items-center justify-center gap-2 rounded-full bg-[#4752c3] px-8 py-4 text-[13px] font-medium leading-5 tracking-[0.28px] text-white shadow-[0px_4px_14px_0px_rgba(71,82,195,0.39)] sm:h-13 sm:px-10 sm:text-[14px]'>
+                            <span>Analyze My Resume</span>
+                            <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                        </button>
+                    </div>
                 </section>
 
             </main>
