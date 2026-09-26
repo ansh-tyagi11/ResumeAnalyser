@@ -8,7 +8,6 @@ export const jwttoken = {
         try {
             return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRATION });
         } catch (error) {
-            console.error('ACTUAL JWT ERROR:', error);
             throw new Error('Failed to authenticate token', { cause: error });
         }
     },

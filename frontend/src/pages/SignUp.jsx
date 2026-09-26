@@ -14,8 +14,37 @@ const SignUp = () => {
     const password = watch('password');
 
     const onSubmit = (data) => {
-        console.log(data);
-        reset();
+        const hasEmptyField = Object.values(data).some(
+            (value) => value === "" || value === null || value === undefined
+        );
+
+        if (hasEmptyField) {
+            return;
+        }
+
+        fetch("http://localhost:3000/api/auth/sign-up", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    const body = await response.json();
+                    throw new Error(body.error || JSON.stringify(body.details) || "Request failed");
+                }
+
+                return response.json();
+            })
+            .then((result) => {
+                console.log("Success:", result);
+                reset();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     };
 
     return (
@@ -61,7 +90,7 @@ const SignUp = () => {
                             <div className="flex flex-col gap-2">
                                 <label
                                     className="text-[14px] leading-5 tracking-[0.28px] font-medium text-[#454653]"
-                                    htmlFor="username"
+                                    htmlFor="name"
                                 >
                                     Full Name
                                 </label>
@@ -72,11 +101,11 @@ const SignUp = () => {
                                     </span>
 
                                     <input
-                                        id="username"
+                                        id="name"
                                         className="pl-8 focus:outline-none bg-transparent w-full min-w-0 placeholder:text-[#C6C5D5]"
                                         type="text"
                                         placeholder="Jane Doe"
-                                        {...register("username", {
+                                        {...register("name", {
                                             required: { value: true, message: "This field is required." },
                                             pattern: {
                                                 value: /^[A-Za-z ]+$/,
@@ -85,8 +114,8 @@ const SignUp = () => {
                                         })}
                                     />
                                 </div>
-                                {errors.username && (
-                                    <span className="text-red-500 text-sm pl-1">{errors.username.message}</span>
+                                {errors.name && (
+                                    <span className="text-red-500 text-sm pl-1">{errors.name.message}</span>
                                 )}
                             </div>
 

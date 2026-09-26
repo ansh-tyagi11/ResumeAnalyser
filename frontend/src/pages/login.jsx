@@ -10,9 +10,37 @@ const Login = () => {
         formState: { errors, isSubmitting },
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
-        reset();
+    const onSubmit = async (data) => {
+        const hasEmptyField = Object.values(data).some(
+            (value) => value == null || value == undefined || value == " "
+        );
+
+        if (hasEmptyField) {
+            return;
+        }
+
+        const response = await fetch("http://localhost:3000/api/auth/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(async (response) => {
+            if (!response.ok) {
+                const body = await response.json();
+                throw new Error(body.error || JSON.stringify(body.details) || "Request failed");
+            }
+
+            return response.json();
+        })
+            .then((result) => {
+                console.log("Success:", result);
+                reset();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     };
 
     return (
