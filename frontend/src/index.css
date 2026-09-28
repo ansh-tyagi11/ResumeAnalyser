@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
 }
 
 html, body, #root {
