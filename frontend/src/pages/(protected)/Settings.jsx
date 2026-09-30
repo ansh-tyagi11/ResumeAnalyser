@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '../../context/AuthProvider';
 
 const fieldBase = 'w-full h-11 rounded-lg border border-[#C6C5D5]/40 bg-[#F2F3FF]/50 px-4 text-[15px] leading-5 outline-none focus:outline-none focus:ring-0 focus:border-[#C6C5D5]/40 placeholder:text-[15px]'
 const labelBase = 'font-semibold text-[14px] leading-5 tracking-[0.2px] text-[#131B2E]'
@@ -10,13 +11,24 @@ const Settings = () => {
         handleSubmit,
         watch,
         getValues,
+        reset,
         formState: { errors, isSubmitting }
     } = useForm();
+    const { user, setUser } = useAuth();
 
     const currentPassword = watch('currentPassword');
     const newPassword = watch('newPassword');
     const confirmNewPassword = watch('confirmNewPassword');
     const passwordChangeStarted = Boolean(currentPassword || newPassword || confirmNewPassword);
+
+    useEffect(() => {
+        if (user) {
+            reset({
+                name: user.name,
+                email: user.email
+            });
+        }
+    }, [user, reset]);
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -26,8 +38,8 @@ const Settings = () => {
     const handleResumeUpdate = (event) => onSubmit({ resumes: event.target.value });
 
     return (
-        <main className='bg-radial mx-auto w-full max-w-4xl from-[#EAF2FF] via-[#FAF8FF] to-[#FFF3F6] px-4 pt-8 pb-4 sm:px-8 sm:pt-12 lg:pl-40 lg:pr-16 lg:pt-16'>
-            <div className='flex flex-col gap-6 pt-6 pb-10 sm:gap-8 sm:pt-10 sm:pb-12'>
+        <main className='box-border min-h-screen w-full min-w-0 overflow-x-hidden bg-radial from-[#EAF2FF] via-[#FAF8FF] to-[#FFF3F6] px-4 pb-4 pt-[calc(10vh+1.5rem)] pl-[calc(4rem+1rem)] sm:px-8 sm:pb-8 sm:pl-[calc(4rem+2rem)] lg:pl-[calc(20vw+4rem)] lg:pr-16'>
+            <div className='mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10 sm:gap-8 sm:pb-12'>
                 {/* Header */}
                 <section className='flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between'>
                     <div className='flex flex-col gap-1'>

@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useForm } from "react-hook-form";
+import { useAuth } from '../context/AuthProvider';
 
 const Login = () => {
+    const { setIsAuthenticated } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -19,7 +22,7 @@ const Login = () => {
             return;
         }
 
-        const response = await fetch("http://localhost:3000/api/auth/login", {
+        await fetch("http://localhost:3000/api/auth/login", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -36,7 +39,9 @@ const Login = () => {
         })
             .then((result) => {
                 console.log("Success:", result);
+                setIsAuthenticated(true);
                 reset();
+                navigate(location.state?.from?.pathname || "/settings", { replace: true });
             })
             .catch((error) => {
                 console.error("Error:", error);

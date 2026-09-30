@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '../context/AuthProvider';
 
 const SignUp = () => {
+    const { setIsAuthenticated } = useAuth();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -40,7 +42,9 @@ const SignUp = () => {
             })
             .then((result) => {
                 console.log("Success:", result);
+                setIsAuthenticated(true);
                 reset();
+                navigate('/settings', { replace: true });
             })
             .catch((error) => {
                 console.error("Error:", error);
