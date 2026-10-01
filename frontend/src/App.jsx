@@ -12,6 +12,7 @@ import UserNavbar from "./components/UserNavbar";
 import { useAuth } from "./context/AuthProvider";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import GuestRoutes from "./components/GuestRoutes";
+import Profile from "./pages/(protected)/Profile";
 
 function App() {
   const { pathname } = useLocation();
@@ -43,6 +44,7 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
           <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
 
