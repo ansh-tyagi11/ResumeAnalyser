@@ -13,6 +13,7 @@ import { useAuth } from "./context/AuthProvider";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import GuestRoutes from "./components/GuestRoutes";
 import Profile from "./pages/(protected)/Profile";
+import Dashboard from "./pages/(protected)/Dashboard";
 
 function App() {
   const { pathname } = useLocation();
@@ -43,6 +44,7 @@ function App() {
         </Route>
 
         <Route element={<ProtectedRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
