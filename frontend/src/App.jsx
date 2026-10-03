@@ -14,6 +14,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import GuestRoutes from "./components/GuestRoutes";
 import Profile from "./pages/(protected)/Profile";
 import Dashboard from "./pages/(protected)/Dashboard";
+import Resumes from "./pages/(protected)/Resumes";
 
 function App() {
   const { pathname } = useLocation();
@@ -47,6 +48,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="//my-resumes" element={<Resumes />} />
         </Route>
       </Routes>
 
