@@ -9,10 +9,32 @@
   font-size: 16px;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   font-family: "Hanken Grotesk", sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 1px;
+    height: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

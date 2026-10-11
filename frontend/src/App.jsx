@@ -17,6 +17,7 @@ import Dashboard from "./pages/(protected)/Dashboard";
 import Resumes from "./pages/(protected)/Resumes";
 import History from "./pages/(protected)/History";
 import ResumeAnalysis from "./pages/(protected)/ResumeAnalysis";
+import JobMatch from "./pages/(protected)/JobMatch";
 
 function App() {
   const { pathname } = useLocation();
@@ -53,6 +54,7 @@ function App() {
           <Route path="/my-resumes" element={<Resumes />} />
           <Route path="/history" element={<History />} />
           <Route path="/resume-analysis" element={<ResumeAnalysis />} />
+          <Route path="/job-match" element={<JobMatch />} />
         </Route>
       </Routes>
 
