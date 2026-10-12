@@ -20,6 +20,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    targetRole: {
+        type: String
+    },
+    experienceLevel: {
+        type: String,
+        enum: ['Student', 'Entry Level', 'Mid Level', 'Senior']
+    }
 }, {
     timestamps: true,
 });
