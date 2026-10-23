@@ -5,6 +5,9 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import connectDB from './src/config/database.js';
 import authRoutes from './src/routes/auth.routes.js';
+import resumeRoutes from './src/routes/resume.routes.js';
+import profileRoutes from './src/routes/profile.routes.js';
+import authMiddleware from './src/middlewares/authMiddleware.js';
 
 dotenv.config();
 
@@ -78,7 +81,9 @@ const rateLimiter = (limit, windowMs) => {
     };
 };
 
-app.use('/api/auth', rateLimiter(5, 60 * 1000), authRoutes);
+app.use('/api/auth', rateLimiter(50, 60 * 1000), authRoutes);
+app.use('/api/resumes', rateLimiter(50, 60 * 1000), resumeRoutes);
+app.use('/api/profile', rateLimiter(50, 60 * 1000), authMiddleware, profileRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

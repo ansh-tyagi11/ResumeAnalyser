@@ -1,10 +1,13 @@
-import React from 'react';
 import { useState } from 'react';
-import { useAuth } from '../context/AuthProvider';
+import useProfile from '../hooks/useProfile';
 
 const UserNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { user } = useAuth();
+    const {
+        profileUser: userProfile,
+        isError,
+        isPending
+    } = useProfile();
 
     return (
         <>
@@ -25,8 +28,16 @@ const UserNavbar = () => {
                         src="https://ui-avatars.com/api/?name=AT" alt="" />
                 </div>
                 <div className={`absolute top-full bg-white/80 shadow-[0px_10px_12px_0px_#FFFFFF] overflow-hidden max-w-[320px] p-4 right-[5%] border rounded-2xl ${isOpen ? "block" : "hidden"}`}>
-                    <div className="w-full">Hi, {user.name}</div>
-                    <div className="w-full">{user.email}</div>
+                    {isPending ? (
+                        <div className="w-full">Loading profile...</div>
+                    ) : isError ? (
+                        <div className="w-full" role="alert">Unable to load profile.</div>
+                    ) : (
+                        <>
+                            <div className="w-full">Hi, {userProfile?.name}</div>
+                            <div className="w-full">{userProfile?.email}</div>
+                        </>
+                    )}
                 </div>
             </header>
         </>

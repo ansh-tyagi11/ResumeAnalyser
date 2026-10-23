@@ -45,5 +45,5 @@ export const authenticateUser = async ({ email, password }) => {
         throw new Error('Invalid email or password');
     }
 
-    return { name: user.name, email: user.email };
+    return { id: user._id.toString(), name: user.name, email: user.email };
 }

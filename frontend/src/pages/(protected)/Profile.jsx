@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form'
-import { useAuth } from '../../context/AuthProvider';
+import { useForm } from 'react-hook-form';
+import useProfile from '../../hooks/useProfile';
 
 const fieldWrap = 'py-[12.5px] pl-4 flex items-center rounded-lg gap-1.5 shadow-[0px_1px_2px_0px_rgb(0_0_0_/5%)]';
 const labelCls = 'font-semibold text-[13px] leading-4 tracking-[0.2px]';
@@ -8,24 +7,36 @@ const hintCls = 'font-medium text-[13px] leading-4 tracking-[0.2px] text-[#45465
 const inputCls = 'text-[15px] placeholder:text-[15px] focus:outline-none w-full';
 
 const Profile = () => {
-    const { user } = useAuth();
+    const {
+        profileUser: userProfile,
+        isError,
+        isPending,
+        updateProfile,
+        isUpdating,
+        isUpdateError,
+        isSuccess,
+    } = useProfile();
+
     const {
         register,
         handleSubmit,
-        reset,
-        formState: { isSubmitting }
+        formState: { isSubmitting, isValid, errors },
     } = useForm({
+        mode: 'onChange',
         values: {
-            name: user?.name ?? '',
-            email: user?.email ?? '',
-            targetRole: user?.targetRole ?? '',
-            experienceLevel: user?.experienceLevel ?? 'Student',
-        }
+            name: userProfile?.name ?? '',
+            email: userProfile?.email ?? '',
+            targetRole: userProfile?.targetRole ?? '',
+            experienceLevel: userProfile?.experienceLevel ?? 'Student',
+        },
     });
 
-    const onSubmit = async (data) => {
-        console.log(data);
-    }
+    const onSubmit = (data) => {
+        updateProfile(data);
+    };
+
+    if (isPending) return <p>Loading...</p>;
+    if (isError) return <p>Currently we are facing issue.</p>
 
     return (
         <>
@@ -40,13 +51,13 @@ const Profile = () => {
                         <div className='flex flex-col gap-6'>
                             <div className='flex gap-4'>
                                 <img
-                                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name ?? '')}`}
+                                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile?.name ?? '')}`}
                                     alt=""
                                     className='h-16 w-16 rounded-full'
                                 />
                                 <div>
-                                    <div className='font-semibold text-[17px] leading-6 tracking-[-0.1px]'>{user.name}</div>
-                                    <div className='font-medium text-[13px] leading-6 text-[#454653]'>{user.email}</div>
+                                    <div className='font-semibold text-[17px] leading-6 tracking-[-0.1px]'>{userProfile?.name}</div>
+                                    <div className='font-medium text-[13px] leading-6 text-[#454653]'>{userProfile?.email}</div>
                                 </div>
                             </div>
 
@@ -63,9 +74,10 @@ const Profile = () => {
                                         id="name"
                                         placeholder='e.g. Alex Morgan'
                                         className={inputCls}
-                                        {...register('name')}
+                                        {...register('name', { required: 'Name is required.' })}
                                     />
                                 </div>
+                                {errors.name && <p className='text-sm text-red-600'>{errors.name.message}</p>}
                             </div>
 
                             <div className='flex gap-1 flex-col'>
@@ -125,15 +137,18 @@ const Profile = () => {
                                 </div>
                             </div>
 
+                            {isUpdateError && <p role="alert" className='text-sm text-red-600'>Unable to update your profile. Please try again.</p>}
+                            {isSuccess && <p role="status" className='text-sm text-green-700'>Profile updated successfully.</p>}
+
                             <div className='flex justify-end'>
                                 <button
                                     type="submit"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isUpdating || !isValid}
                                     className='flex items-center gap-1 h-10 px-6 rounded-lg bg-[#7C87FB] text-white cursor-pointer shadow-[0px_1px_3px_0px_#0F172A,0px_4px_16px_-2px_rgb(15_23_42_/4%)] disabled:cursor-not-allowed disabled:opacity-50'
                                 >
                                     <span className='material-symbols-outlined text-[18px]'>save</span>
                                     <span className='font-semibold text-[13px] leading-4 tracking-[0.2px]'>
-                                        {isSubmitting ? 'Saving...' : 'Save Changes'}
+                                        {isSubmitting || isUpdating ? 'Saving...' : 'Save Changes'}
                                     </span>
                                 </button>
                             </div>

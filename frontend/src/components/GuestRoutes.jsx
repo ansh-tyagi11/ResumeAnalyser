@@ -6,7 +6,7 @@ function GuestRoutes() {
 
     if (loading) return null;
 
-    return isAuthenticated ? (<Navigate to='/settings' replace />) : (<Outlet />);
+    return isAuthenticated ? (<Navigate to='/dashboard' replace />) : (<Outlet />);
 }
 
 export default GuestRoutes

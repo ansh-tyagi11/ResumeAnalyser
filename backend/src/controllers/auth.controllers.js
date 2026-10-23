@@ -20,7 +20,7 @@ export const signUp = async (req, res, next) => {
         const user = await createUser({ name, email, password });
 
         const token = jwttoken.sign({
-            id: user._id,
+            id: user._id.toString(),
             email: user.email,
         });
 
@@ -56,8 +56,7 @@ export const login = async (req, res, next) => {
         const user = await authenticateUser(validateResult.data);
 
         const token = jwttoken.sign({
-            id: user._id,
-            name: user.name,
+            id: user.id,
             email: user.email
         });
 
